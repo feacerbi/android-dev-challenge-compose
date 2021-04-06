@@ -9,9 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Button
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -25,6 +23,7 @@ import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.example.androiddevchallenge.ui.theme.MyTheme
+import com.example.androiddevchallenge.ui.theme.typography
 
 class LogInActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -105,7 +104,8 @@ fun LoginScreen() {
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                     bottom.linkTo(parent.bottom)
-                }
+                },
+            style = typography.body1
         )
     }
 }
@@ -128,7 +128,7 @@ fun Background(darkTheme: Boolean = isSystemInDarkTheme()) {
 
 @Composable
 fun Title(modifier: Modifier) {
-    Text(text = "LOG IN", modifier = modifier)
+    Text(text = "LOG IN", modifier = modifier, style = typography.h1)
 }
 
 @Composable
@@ -142,7 +142,8 @@ fun EmailInputField(modifier: Modifier) {
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
         maxLines = 1,
         modifier = modifier
-            .height(56.dp)
+            .height(56.dp),
+        textStyle = typography.body1
     )
 }
 
@@ -158,7 +159,8 @@ fun PasswordInputField(modifier: Modifier) {
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         maxLines = 1,
         modifier = modifier
-            .height(56.dp)
+            .height(56.dp),
+        textStyle = typography.body1
     )
 }
 
@@ -167,7 +169,8 @@ fun LogInButton(modifier: Modifier) {
     Button(
         onClick = { /*TODO*/ },
         modifier = modifier
-            .height(72.dp)
+            .height(72.dp),
+        colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary)
     ) {
         Text(text = "LOG IN")
     }
